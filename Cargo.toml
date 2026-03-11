@@ -1,0 +1,9 @@
+[package]
+name = "rudns"
+version = "0.1.0"
+edition = "2024"
+authors = ["Rajmani Kumar", "@rajmani7584"]
+
+[dependencies]
+socket2 = { version = "0.6.3", features = ["all"] }
+tokio = { version = "1.50.0", features = ["full"] }
