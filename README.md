@@ -29,3 +29,14 @@ async fn main() {
     mdns.stop().await.unwrap();
 }
 ```
+
+### Include lib to your cargo project:
+```toml
+[dependencies]
+rudns = { git = "https://github.com/rajmani7584/rudns", version = "0.1.0" }
+```
+
+### OR by cargo add -
+```sh
+cargo add --git https://github.com/rajmani7584/rudns
+```
