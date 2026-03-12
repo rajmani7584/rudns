@@ -2,41 +2,43 @@
 
 Example
 ```rs
-use rudns::rumdns::RuMdns;
-
 use std::net::Ipv4Addr;
+
+use rust_ns::mdns::Server;
 use tokio::signal;
 
 #[tokio::main]
 async fn main() {
     let ip = Ipv4Addr::new(192, 168, 1, 1);
-    let port = 3000;
+    let port = 80;
 
-    let mut mdns = RuMdns::new("_http_._tcp", ip, port);
+    let mut server = Server::new("_http._tcp", ip, port);
 
-    // mdns.add_txt_info(("path", "/"));
-    // mdns.add_txt_info(("version", "1.0"));
+    // server.add_txt_info(("path", "/"));
+    // server.add_txt_info(("version", "1.0"));
 
-    // mdns.set_hostname("rudns");
-    // mdns.set_service_name("RsDns by Rajmani7584");
+    // server.set_hostname("rustns");
+    // server.set_service_name("Rust-NS by @rajmani7584");
 
-    mdns.run().await.unwrap();
+    // server.ttl(4500);
+
+    server.run().await.unwrap();
 
     signal::ctrl_c().await.unwrap();
 
     println!("Stopping..");
 
-    mdns.stop().await.unwrap();
+    server.stop().await.unwrap();
 }
 ```
 
 ### Include lib to your cargo project:
 ```toml
 [dependencies]
-rudns = { git = "https://github.com/rajmani7584/rudns", version = "0.1.0" }
+rudns = { git = "https://github.com/rajmani7584/rust-ns", version = "0.1.0" }
 ```
 
 ### OR by cargo add -
 ```sh
-cargo add --git https://github.com/rajmani7584/rudns
+cargo add --git https://github.com/rajmani7584/rust-ns
 ```

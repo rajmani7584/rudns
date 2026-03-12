@@ -4,14 +4,14 @@ use tokio::task::JoinHandle;
 use crate::{DEFAULT_TTL, config::Config, responder::MDnsResponder};
 
 
-pub struct RuMdns {
+pub struct Server {
     responder: Option<Arc<MDnsResponder>>,
     config: Config,
     join_handle: Option<JoinHandle<()>>,
 }
 
 
-impl RuMdns {
+impl Server {
     pub fn new(srv_type: &str, ip: Ipv4Addr, port: u16) -> Self {
         let iface = match Self::get_system_ip() {
             Ok(ip) => ip,
@@ -20,9 +20,9 @@ impl RuMdns {
 
         Self {
             config: Config {
-                srv_name: "RuDns Service".into(),
+                srv_name: "Rust-NS Service".into(),
                 srv_type: srv_type.into(),
-                hostname: "rudns".into(),
+                hostname: "rustns".into(),
                 ip,
                 port,
                 txt: vec![],
