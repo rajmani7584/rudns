@@ -1,5 +1,5 @@
 [package]
-name = "rudns"
+name = "rust-ns"
 version = "0.1.0"
 edition = "2024"
 authors = ["Rajmani Kumar", "@rajmani7584"]

@@ -1,6 +1,6 @@
 use std::net::Ipv4Addr;
 
-pub mod rumdns;
+pub mod mdns;
 mod config;
 mod responder;
 mod query;
